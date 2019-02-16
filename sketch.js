@@ -1,4 +1,7 @@
 const FILE = 'Crystal Blue.mp3';
+const outsideColor = '#40f7ea';
+const insideColor = '#a4fdf6';
+
 
 
 /**
@@ -12,6 +15,9 @@ var body = document.documentElement;
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
+  let canvas = document.querySelector('canvas');
+  canvas.style.width = "100%";
+
   noFill();
 
   soundFormats('mp3');
@@ -23,13 +29,11 @@ function setup() {
   window.addEventListener('click', function () {
 
     // play or pause track depending on state
-    if (body.dataset.playing === 'false' || !body.dataset.playing) {
+    if (!source._playing) {
       source.play();
-      console.dir(source);
-      body.dataset.playing = 'true';
-    } else if (body.dataset.playing === 'true') {
+      // console.dir(source);
+    } else if (source._playing) {
       source.pause();
-      body.dataset.playing = 'false';
     }
 
   }, false);
@@ -42,7 +46,7 @@ function setup() {
 }
 
 function draw() {
-  background(64, 247, 234);
+  background(outsideColor);
   var spectrum = fft.analyze();
   var newBuffer = [];
 
@@ -69,8 +73,8 @@ function draw() {
   curveVertex(width, height);
   curveVertex(0, height);
   curveVertex(0, height);
-  fill(164, 253, 246);
-  stroke(164, 253, 246);
+  fill(insideColor);
+  stroke(insideColor);
 
   endShape();
 }
