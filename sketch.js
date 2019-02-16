@@ -8,6 +8,7 @@ const FILE = 'Crystal Blue.mp3';
  */
 
 var source, fft;
+var body = document.documentElement;
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
@@ -16,31 +17,23 @@ function setup() {
   soundFormats('mp3');
   source = loadSound(FILE);
 
-  const playButton = document.querySelector('.button');
+  source._looping = true;
+  console.dir(source)
 
-  playButton.addEventListener('click', function () {
-
-    // check if context is in suspended state (autoplay policy)
-    // if (audioContext.state === 'suspended') {
-    //   audioContext.resume();
-    // }
+  window.addEventListener('click', function () {
 
     // play or pause track depending on state
-    if (this.dataset.playing === 'false' || !this.dataset.playing) {
+    if (body.dataset.playing === 'false' || !body.dataset.playing) {
       source.play();
-      this.dataset.playing = 'true';
-      playButton.classList.add("pause");
-    } else if (this.dataset.playing === 'true') {
+      console.dir(source);
+      body.dataset.playing = 'true';
+    } else if (body.dataset.playing === 'true') {
       source.pause();
-      this.dataset.playing = 'false';
-      playButton.classList.remove("pause");
+      body.dataset.playing = 'false';
     }
 
   }, false);
 
-  // audioContext.addEventListener('ended', () => {
-  //   playButton.dataset.playing = 'false';
-  // }, false);
 
 
 
