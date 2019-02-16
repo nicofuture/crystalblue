@@ -26,7 +26,7 @@ function setup() {
   source._looping = true;
   console.dir(source)
 
-  window.addEventListener('click', function () {
+  canvas.addEventListener('click', function () {
 
     // play or pause track depending on state
     if (!source._playing) {
@@ -36,7 +36,9 @@ function setup() {
       source.pause();
     }
 
-  }, false);
+  });
+
+
 
 
 
