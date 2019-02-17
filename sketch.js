@@ -1,6 +1,6 @@
 const FILE = 'Crystal Blue.mp3';
-const outsideColor = '#58fedd';
-const insideColor = '#a7d8de';
+const outsideColor = '#94c9ff';
+const insideColor = '#c0f4ff';
 
 
 
