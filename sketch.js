@@ -1,5 +1,5 @@
 const FILE = 'Crystal Blue.mp3';
-const outsideColor = '#68a0b0';
+const outsideColor = '#58fedd';
 const insideColor = '#a7d8de';
 
 
