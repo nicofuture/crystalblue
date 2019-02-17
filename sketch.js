@@ -1,6 +1,6 @@
 const FILE = 'Crystal Blue.mp3';
-const outsideColor = '#40f7ea';
-const insideColor = '#a4fdf6';
+const outsideColor = '#a7d8de';
+const insideColor = '#c3d6dd';
 
 
 
@@ -85,7 +85,7 @@ function draw() {
 /**
  *  Divides an fft array into octaves with each
  *  divided by three, or by a specified "slicesPerOctave".
- *  
+ *
  *  There are 10 octaves in the range 20 - 20,000 Hz,
  *  so this will result in 10 * slicesPerOctave + 1
  *
@@ -103,7 +103,7 @@ function splitOctaves(spectrum, slicesPerOctave) {
   var n = slicesPerOctave || 3;
   var nthRootOfTwo = Math.pow(2, 1 / n);
 
-  // the last N bins get their own 
+  // the last N bins get their own
   var lowestBin = slicesPerOctave;
 
   var binIndex = len - 1;
