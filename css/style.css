@@ -41,6 +41,8 @@ canvas {
     transform: translate(-50%, -50%);
     border-bottom: 2px solid transparent;
     white-space: nowrap;
+    line-height: 1.2em;
+    box-sizing: border-box;
 }
 
 .paused {
