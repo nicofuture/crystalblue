@@ -1,21 +1,14 @@
-const FILE = 'Crystal Blue.mp3';
-const outsideColor = '#94c9ff';
+const NAME = 'Crystal Blue';
+const FORMAT = '.mp3';
+const FILE = NAME + FORMAT;
+const outsideColor = '#007eff';
 const insideColor = '#c0f4ff';
 
-
-
-/**
- *  Re-group the array of FFT bins into an
- *  array of more meaningful values
- *  using the splitOctaves method.
- */
-
-var source, fft;
-var body = document.documentElement;
+var source, fft, canvas;
 
 function setup() {
-  createCanvas(window.innerWidth, window.innerHeight);
-  let canvas = document.querySelector('canvas');
+  createCanvas(windowWidth, windowHeight);
+  canvas = document.querySelector('canvas');
   canvas.style.width = "100%";
 
   noFill();
@@ -26,25 +19,47 @@ function setup() {
   source._looping = true;
   console.dir(source)
 
-  canvas.addEventListener('click', function () {
+  fft = new p5.FFT(0.8, 1024);
+  fft.setInput(source);
 
-    // play or pause track depending on state
+  // show title when loading is finished
+
+  var title = document.querySelector(".title");
+  Pace.once('hide', function () {
+    title.innerHTML = NAME;
+  })
+
+  // play if title clicked
+  // pause if canvas clicked
+
+  title.addEventListener('click', function () {
+
     if (!source._playing) {
       source.play();
-      // console.dir(source);
-    } else if (source._playing) {
+      title.classList.add("paused");
+    }
+
+  });
+
+
+  canvas.addEventListener('click', function () {
+
+    if (source._playing) {
       source.pause();
+      title.classList.remove('paused');
     }
 
   });
 
 
 
+  // make canvas height responsive
 
-
-
-  fft = new p5.FFT(0.8, 1024);
-  fft.setInput(source);
+  window.addEventListener('resize', function () {
+    if (window.innerHeight != canvas.style.height) {
+      canvas.style.height = window.innerHeight + "px";
+    }
+  });
 }
 
 function draw() {
@@ -79,7 +94,9 @@ function draw() {
   stroke(insideColor);
 
   endShape();
+
 }
+
 
 
 /**

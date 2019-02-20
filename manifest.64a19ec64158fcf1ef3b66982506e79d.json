@@ -1,0 +1,29 @@
+{
+  "icons": [
+    {
+      "src": "icon_256x256.e5fa8ac9becca507b51c6d7709f3eaaf.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "icon_192x192.d287d47c33673c2ebef3744936fc5d88.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon_128x128.b372cfb824a67cfbb668502db161c308.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "icon_96x96.19b89a1abe0485ac2402dd4872d96ff3.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    }
+  ],
+  "name": "Crystal Blue",
+  "short_name": "Crystal Blue",
+  "display": "standalone",
+  "start_url": ".",
+  "description": "Music visualization"
+}
