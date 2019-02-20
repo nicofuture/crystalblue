@@ -25,5 +25,6 @@
   "short_name": "Crystal Blue",
   "display": "standalone",
   "start_url": ".",
-  "description": "Music visualization"
+  "description": "Music visualization",
+  "theme_color": "#007eff"
 }
