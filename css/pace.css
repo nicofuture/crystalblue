@@ -13,10 +13,9 @@
     bottom: 0;
     height: 8px;
     width: 200px;
-    background: #fff;
+    background: #007eff;
     border: 1px solid #bff4ff;
     overflow: hidden;
-    border-radius: 4px;
 }
 
 .pace .pace-progress {
