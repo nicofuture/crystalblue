@@ -2,7 +2,7 @@
     font-family: 'Arial Black';
     font-style: normal;
     font-weight: normal;
-    src: local("Arial Black"), url('../fonts/Arial Black.woff') format('woff');
+    src: local("Arial Black"), url('../fonts/ArialBlack.woff') format('woff');
 }
 
 html,
