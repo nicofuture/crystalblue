@@ -6,6 +6,22 @@ const insideColor = '#c0f4ff';
 
 var source, fft, canvas;
 
+var audio = new Audio();
+audio.src = FILE;
+audio.controls = false;
+// audio.autoplay = true;
+audio.loop = true;
+
+
+var audio2 = new Audio();
+audio2.src = FILE;
+audio2.controls = false;
+// audio.autoplay = true;
+audio2.loop = true;
+
+
+// Our <audio> element will be the audio source.
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   canvas = document.querySelector('canvas');
@@ -14,13 +30,22 @@ function setup() {
   noFill();
 
   soundFormats('mp3');
-  source = loadSound(FILE);
+  // source = loadSound(FILE);
 
-  source._looping = true;
+  // document.body.appendChild(audio);
+  // document.body.appendChild(audio2);
+
+  var audioCtx = getAudioContext();
+
+  var source = audioCtx.createMediaElementSource(audio);
+
+  // source._looping = true;
   console.dir(source)
+  console.dir("audio", audio)
 
   fft = new p5.FFT(0.8, 1024);
   fft.setInput(source);
+  // source.connect(audioCtx.destination);
 
   // show title when loading is finished
 
@@ -34,13 +59,15 @@ function setup() {
 
   canvas.addEventListener('click', function () {
 
-    if (!source._playing) {
-      source.play();
+    if (audio.paused && audio2.paused) {
+      audio.play();
+      audio2.play();
       button.classList.remove("paused");
     }
 
     else {
-      source.pause();
+      audio.pause();
+      audio2.pause();
       button.classList.add("paused");
     }
 

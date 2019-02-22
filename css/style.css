@@ -45,14 +45,4 @@ i {
 
 .paused {
     opacity: 1;
-    transition: opacity 0.4s linear;
-}
-
-@media(min-width: 768px) {
-    .title {
-        font-size: 5.555vw;
-    }
-    .title:hover {
-        border-color: #bff4ff;
-    }
 }
