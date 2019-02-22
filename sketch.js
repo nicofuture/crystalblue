@@ -24,32 +24,30 @@ function setup() {
 
   // show title when loading is finished
 
-  var title = document.querySelector(".title");
+  var button = document.querySelector("i");
   Pace.once('hide', function () {
-    title.innerHTML = NAME;
+    button.classList.add("paused");
   })
 
   // play if title clicked
   // pause if canvas clicked
 
-  title.addEventListener('click', function () {
+  canvas.addEventListener('click', function () {
 
     if (!source._playing) {
       source.play();
-      title.classList.add("paused");
+      button.classList.remove("paused");
     }
 
-  });
-
-
-  canvas.addEventListener('click', function () {
-
-    if (source._playing) {
+    else {
       source.pause();
-      title.classList.remove('paused');
+      button.classList.add("paused");
     }
 
   });
+
+
+
 
 
 
