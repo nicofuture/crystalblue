@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Arial Black';
+    font-style: normal;
+    font-weight: normal;
+    src: local("Arial Black"), url('../fonts/ArialBlack.woff') format('woff');
+}
+
 html,
 body {
     height: 100%;
@@ -24,35 +31,18 @@ canvas {
     cursor: pointer;
 }
 
-.title {
+i {
     cursor: pointer;
     color: #bff4ff;
-    font-family: "Arial Black";
-    font-size: 7.8125vw;
-    font-weight: 900;
-    letter-spacing: 0.86px;
-    line-height: 80px;
-    text-transform: uppercase;
-    display: inline-block;
-    transition: opacity 0.4s linear;
+    transition: opacity 0.2s linear;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-bottom: 2px solid transparent;
-    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .paused {
-    pointer-events: none;
-    opacity: 0;
-}
-
-@media(min-width: 768px) {
-    .title {
-        font-size: 5.555vw;
-    }
-    .title:hover {
-        border-color: #bff4ff;
-    }
+    opacity: 1;
 }
