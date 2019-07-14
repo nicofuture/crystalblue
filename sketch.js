@@ -1,8 +1,8 @@
-const NAME = 'Crystal Blue';
-const FORMAT = '.mp3';
+const NAME = "Crystal Blue";
+const FORMAT = ".mp3";
 const FILE = NAME + FORMAT;
-const outsideColor = '#007eff';
-const insideColor = '#c0f4ff';
+const outsideColor = "#007eff";
+const insideColor = "#c0f4ff";
 
 var source, fft, canvas;
 
@@ -12,24 +12,22 @@ audio.controls = false;
 // audio.autoplay = true;
 audio.loop = true;
 
-
 var audio2 = new Audio();
 audio2.src = FILE;
 audio2.controls = false;
 // audio.autoplay = true;
 audio2.loop = true;
 
-
 // Our <audio> element will be the audio source.
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  canvas = document.querySelector('canvas');
+  canvas = document.querySelector("canvas");
   canvas.style.width = "100%";
 
   noFill();
 
-  soundFormats('mp3');
+  soundFormats("mp3");
   // source = loadSound(FILE);
 
   // document.body.appendChild(audio);
@@ -40,47 +38,38 @@ function setup() {
   var source = audioCtx.createMediaElementSource(audio);
 
   // source._looping = true;
-  console.dir(source)
-  console.dir("audio", audio)
+  console.dir(source);
+  console.dir("audio", audio);
 
   fft = new p5.FFT(0.8, 1024);
   fft.setInput(source);
   // source.connect(audioCtx.destination);
 
-  // show title when loading is finished
-
-  var button = document.querySelector("i");
-  Pace.once('hide', function () {
+  var button = document.querySelector(".waveform__play");
+  Pace.once("hide", function() {
     button.classList.add("paused");
-  })
+  });
 
   // play if title clicked
   // pause if canvas clicked
 
-  canvas.addEventListener('click', function () {
-
+  canvas.addEventListener("click", function() {
     if (audio.paused && audio2.paused) {
-      audio.play();
-      audio2.play();
-      button.classList.remove("paused");
-    }
-
-    else {
+      audioCtx.resume().then(() => {
+        audio.play();
+        audio2.play();
+        button.classList.remove("paused");
+      });
+    } else {
       audio.pause();
       audio2.pause();
       button.classList.add("paused");
     }
-
   });
-
-
-
-
-
 
   // make canvas height responsive
 
-  window.addEventListener('resize', function () {
+  window.addEventListener("resize", function() {
     if (window.innerHeight != canvas.style.height) {
       canvas.style.height = window.innerHeight + "px";
     }
@@ -110,7 +99,6 @@ function draw() {
     curveVertex(x, y);
   }
 
-
   // one last point at the end
   curveVertex(width, height);
   curveVertex(0, height);
@@ -119,10 +107,7 @@ function draw() {
   stroke(insideColor);
 
   endShape();
-
 }
-
-
 
 /**
  *  Divides an fft array into octaves with each
@@ -150,7 +135,6 @@ function splitOctaves(spectrum, slicesPerOctave) {
 
   var binIndex = len - 1;
   var i = binIndex;
-
 
   while (i > lowestBin) {
     var nextBinIndex = round(binIndex / nthRootOfTwo);
@@ -185,11 +169,8 @@ function splitOctaves(spectrum, slicesPerOctave) {
   return scaledSpectrum;
 }
 
-
-
 // average a point in an array with its neighbors
 function smoothPoint(spectrum, index, numberOfNeighbors) {
-
   // default to 2 neighbors on either side
   var neighbors = numberOfNeighbors || 2;
   var len = spectrum.length;
@@ -200,9 +181,9 @@ function smoothPoint(spectrum, index, numberOfNeighbors) {
   var indexMinusNeighbors = index - neighbors;
   var smoothedPoints = 0;
 
-  for (var i = indexMinusNeighbors; i < (index + neighbors) && i < len; i++) {
+  for (var i = indexMinusNeighbors; i < index + neighbors && i < len; i++) {
     // if there is a point at spectrum[i], tally it
-    if (typeof (spectrum[i]) !== 'undefined') {
+    if (typeof spectrum[i] !== "undefined") {
       val += spectrum[i];
       smoothedPoints++;
     }
