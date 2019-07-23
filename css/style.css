@@ -34,7 +34,7 @@ canvas {
   transform: translate(-50%, -50%);
   opacity: 0;
   pointer-events: none;
-  width: 16%;
+  width: 12%;
 }
 
 .waveform__play svg {
