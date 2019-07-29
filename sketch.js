@@ -1,7 +1,7 @@
 const NAME = "Crystal Blue";
 const FORMAT = ".mp3";
 const FILE = NAME + FORMAT;
-const outsideColor = "#007eff";
+const outsideColor = "#f7fefe";
 const insideColor = "#c0f4ff";
 
 var source, fft, canvas;
