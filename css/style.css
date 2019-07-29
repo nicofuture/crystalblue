@@ -42,7 +42,11 @@ canvas {
 }
 
 .waveform__play svg .st0 {
-  fill: #c0f4ff;
+  fill: #333;
+}
+
+.waveform__play svg:hover .st0 {
+  fill: #9b9b9b;
 }
 
 .paused {
