@@ -24,7 +24,6 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   canvas = document.querySelector("canvas");
   canvas.style.width = "100%";
-  canvas.style.height = "100%";
 
   noFill();
 
@@ -70,11 +69,11 @@ function setup() {
 
   // make canvas height responsive
 
-  // window.addEventListener("resize", function() {
-  //   if (window.innerHeight != canvas.style.height) {
-  //     canvas.style.height = window.innerHeight + "px";
-  //   }
-  // });
+  window.addEventListener("resize", function() {
+    if (window.innerHeight != canvas.style.height) {
+      canvas.style.height = window.innerHeight + "px";
+    }
+  });
 }
 
 function draw() {
