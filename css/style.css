@@ -24,6 +24,7 @@ canvas {
   cursor: pointer;
 }
 
+
 .waveform__play {
   cursor: pointer;
   color: #bff4ff;
@@ -45,7 +46,7 @@ canvas {
   fill: #333;
 }
 
-.waveform__play svg:hover .st0 {
+svg:hover {
   fill: #9b9b9b;
 }
 
