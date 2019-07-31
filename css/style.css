@@ -59,6 +59,10 @@ svg:hover {
   pointer-events: auto;
 }
 
+.canvas-paused {
+  cursor: auto;
+}
+
 @media (min-width: 548px) {
   .waveform__play {
     width: 16%;
