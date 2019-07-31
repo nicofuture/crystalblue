@@ -27,13 +27,13 @@ canvas {
 .waveform__play {
   cursor: pointer;
   color: #bff4ff;
-  transition: all 0.2s linear;
+  transition: all 0.3s ease;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
-  width: 12%;
+  width: 22%;
   pointer-events: none;
 }
 
@@ -57,4 +57,10 @@ svg:hover {
   opacity: 1;
   cursor: pointer;
   pointer-events: auto;
+}
+
+@media (min-width: 548px) {
+  .waveform__play {
+    width: 12%;
+  }
 }
