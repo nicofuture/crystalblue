@@ -24,6 +24,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   canvas = document.querySelector("canvas");
   canvas.style.width = "100%";
+  canvas.classList.add("canvas-paused");
 
   noFill();
 
@@ -58,6 +59,7 @@ function setup() {
       audio.pause();
       audio2.pause();
       button.classList.add("paused");
+      canvas.classList.add("canvas-paused");
     }
   });
 
@@ -67,6 +69,7 @@ function setup() {
         audio.play();
         audio2.play();
         button.classList.remove("paused");
+        canvas.classList.remove("canvas-paused");
       });
     }
   });
