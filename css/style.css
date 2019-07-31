@@ -61,6 +61,12 @@ svg:hover {
 
 @media (min-width: 548px) {
   .waveform__play {
+    width: 16%;
+  }
+}
+
+@media (min-width: 768px) {
+  .waveform__play {
     width: 12%;
   }
 }
