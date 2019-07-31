@@ -24,18 +24,21 @@ canvas {
   cursor: pointer;
 }
 
-
 .waveform__play {
   cursor: pointer;
   color: #bff4ff;
-  transition: opacity 0.2s linear;
+  transition: all 0.2s linear;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
-  pointer-events: none;
   width: 12%;
+  pointer-events: none;
+}
+
+.waveform__play:hover {
+  transform: translate(-50%, -50%) scale(1.15);
 }
 
 .waveform__play svg {
@@ -52,4 +55,6 @@ svg:hover {
 
 .paused {
   opacity: 1;
+  cursor: pointer;
+  pointer-events: auto;
 }

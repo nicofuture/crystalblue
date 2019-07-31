@@ -54,16 +54,20 @@ function setup() {
   // pause if canvas clicked
 
   canvas.addEventListener("click", function() {
+    if (!audio.paused && !audio2.paused) {
+      audio.pause();
+      audio2.pause();
+      button.classList.add("paused");
+    }
+  });
+
+  button.addEventListener("click", function() {
     if (audio.paused && audio2.paused) {
       audioCtx.resume().then(() => {
         audio.play();
         audio2.play();
         button.classList.remove("paused");
       });
-    } else {
-      audio.pause();
-      audio2.pause();
-      button.classList.add("paused");
     }
   });
 
