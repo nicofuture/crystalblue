@@ -46,12 +46,9 @@ canvas {
 }
 
 .waveform__play svg .st0 {
-  fill: #636363;
+  fill: #c0f4ff;
 }
 
-svg:hover {
-  fill: #9b9b9b;
-}
 
 .paused {
   opacity: 1;
