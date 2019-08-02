@@ -23,7 +23,6 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   canvas = document.querySelector("canvas");
   canvas.style.width = "100%";
-  canvas.classList.add("canvas-paused");
 
   // Our <audio> element will be the audio source.
 
@@ -34,11 +33,12 @@ function setup() {
 
   canvas.addEventListener("click", function() {
     if (audio.paused && audio2.paused) {
-      audioCtx.resume().then(() => {
-        audio.play();
-        audio2.play();
-        button.classList.remove("paused");
-      });
+      audioCtx.resume();
+      // .then(() => {
+      audio.play();
+      audio2.play();
+      button.classList.remove("paused");
+      // });
       return;
     }
     if (!audio.paused && !audio2.paused) {
