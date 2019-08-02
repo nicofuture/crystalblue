@@ -49,15 +49,10 @@ canvas {
   fill: #c0f4ff;
 }
 
-
 .paused {
   opacity: 1;
   cursor: pointer;
   pointer-events: auto;
-}
-
-.canvas-paused {
-  cursor: auto;
 }
 
 @media (min-width: 548px) {
