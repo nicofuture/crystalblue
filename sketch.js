@@ -33,16 +33,12 @@ function setup() {
 
   canvas.addEventListener("click", function() {
     if (audio.paused && audio2.paused) {
-      audioCtx.resume();
-      // .then(() => {
       audio.play();
       audio2.play();
       button.classList.remove("paused");
-      // });
       return;
     }
     if (!audio.paused && !audio2.paused) {
-      console.log("pause", audio.paused, audio2.paused);
       audio.pause();
       audio2.pause();
       button.classList.add("paused");
@@ -51,11 +47,9 @@ function setup() {
 
   button.addEventListener("click", function() {
     if (audio.paused && audio2.paused) {
-      audioCtx.resume().then(() => {
-        audio.play();
-        audio2.play();
-        button.classList.remove("paused");
-      });
+      audio.play();
+      audio2.play();
+      button.classList.remove("paused");
     }
   });
 
@@ -70,6 +64,7 @@ function setup() {
   fft = new p5.FFT(0.8, 1024);
   fft.setInput(source);
 
+  userStartAudio();
   // source.connect(audioCtx.destination);
 
   Pace.once("hide", function() {
