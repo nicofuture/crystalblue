@@ -5,6 +5,7 @@ const outsideColor = "#f1f9fd";
 const insideColor = "#c0f4ff";
 
 var source, fft, canvas;
+var audioCtx;
 
 var audio = new Audio();
 audio.src = FILE;
@@ -18,60 +19,56 @@ audio2.controls = false;
 // audio.autoplay = true;
 audio2.loop = true;
 
-// Our <audio> element will be the audio source.
-
 function setup() {
   createCanvas(windowWidth, windowHeight);
   canvas = document.querySelector("canvas");
   canvas.style.width = "100%";
-  canvas.classList.add("canvas-paused");
 
-  noFill();
-
-  soundFormats("mp3");
-  // source = loadSound(FILE);
-
-  // document.body.appendChild(audio);
-  // document.body.appendChild(audio2);
-
-  var audioCtx = getAudioContext();
-
-  var source = audioCtx.createMediaElementSource(audio);
-
-  // source._looping = true;
-  console.dir(source);
-  console.dir("audio", audio);
-
-  fft = new p5.FFT(0.8, 1024);
-  fft.setInput(source);
-  // source.connect(audioCtx.destination);
-
-  var button = document.querySelector(".waveform__play");
-  Pace.once("hide", function() {
-    button.classList.add("paused");
-  });
+  // Our <audio> element will be the audio source.
 
   // play if title clicked
   // pause if canvas clicked
 
+  var button = document.querySelector(".waveform__play");
+
   canvas.addEventListener("click", function() {
+    if (audio.paused && audio2.paused) {
+      audio.play();
+      audio2.play();
+      button.classList.remove("paused");
+      return;
+    }
     if (!audio.paused && !audio2.paused) {
       audio.pause();
       audio2.pause();
       button.classList.add("paused");
-      canvas.classList.add("canvas-paused");
     }
   });
 
   button.addEventListener("click", function() {
     if (audio.paused && audio2.paused) {
-      audioCtx.resume().then(() => {
-        audio.play();
-        audio2.play();
-        button.classList.remove("paused");
-        canvas.classList.remove("canvas-paused");
-      });
+      audio.play();
+      audio2.play();
+      button.classList.remove("paused");
     }
+  });
+
+  noFill();
+
+  soundFormats("mp3");
+
+  audioCtx = getAudioContext();
+
+  source = audioCtx.createMediaElementSource(audio);
+
+  fft = new p5.FFT(0.8, 1024);
+  fft.setInput(source);
+
+  userStartAudio();
+  // source.connect(audioCtx.destination);
+
+  Pace.once("hide", function() {
+    button.classList.add("paused");
   });
 
   // make canvas height responsive
